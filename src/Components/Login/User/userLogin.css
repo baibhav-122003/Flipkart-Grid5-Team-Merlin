@@ -1,0 +1,62 @@
+/* FlipkartLogin.css */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1f3f6;
+  }
+  
+  .login-box {
+    width: 400px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .login-logo {
+    width: 100px;
+    height: auto;
+  }
+  
+  .login-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #fb641b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #ff812f;
+  }
+  
+  .forgot-password {
+    margin-top: 10px;
+    color: #2874f0;
+    cursor: pointer;
+  }
+  
+  .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .signup-text {
+    color: #2874f0;
+    cursor: pointer;
+  }
+  

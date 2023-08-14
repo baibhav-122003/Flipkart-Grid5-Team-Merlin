@@ -1,0 +1,40 @@
+/* HomePage.css */
+.home-page {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .items-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .item-card {
+    display: inline-block;
+    width: calc(50% - 20px);
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .item-card:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .item-card a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .item-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  

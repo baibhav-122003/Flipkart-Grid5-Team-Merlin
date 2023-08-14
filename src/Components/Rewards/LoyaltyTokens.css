@@ -1,0 +1,22 @@
+/* LoyaltyTokens.css */
+.loyalty-tokens {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .loyalty-tokens h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .token-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2874f0;
+    margin-top: 10px;
+  }
+  

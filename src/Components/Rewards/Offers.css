@@ -1,0 +1,39 @@
+/* Offers.css */
+.offers {
+    padding: 20px;
+  }
+  
+  .offer-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .offer-tile {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .offer-name {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .token-button {
+    padding: 8px 16px;
+    background-color: #2874f0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .token-button:hover {
+    background-color: #1f64db;
+  }
+  
