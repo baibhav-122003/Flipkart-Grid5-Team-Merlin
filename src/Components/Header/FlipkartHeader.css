@@ -1,37 +1,4 @@
-/* FlipkartHeader.css
-.flipkart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #2874f0;
-    color: white;
-  }
-  
-  .logo-container {
-    flex: 1;
-  }
-  
-  .logo {
-    width: 120px;
-    height: auto;
-  }
-  
-  .account-button {
-    padding: 8px 16px;
-    background-color: white;
-    color: #2874f0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .account-button:hover {
-    background-color: #f1f3f6;
-  }
-   */
 
-   /* FlipkartHeader.css */
 .flipkart-header {
   display: flex;
   justify-content: space-between;
@@ -63,4 +30,9 @@
 
 .account-button:hover {
   background-color: #f1f3f6;
+}
+
+.logo {
+  width: 50px;
+  height: 30px;
 }

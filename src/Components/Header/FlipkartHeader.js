@@ -45,7 +45,13 @@ const FlipkartHeader = () => {
   return (
     <header className="flipkart-header">
       <div className="logo-container">
-        <Link to="/">Flipkart</Link>
+        <Link to="/">
+          <img
+            src="https://logos-world.net/wp-content/uploads/2020/11/Flipkart-Emblem.png"
+            alt="Flipkart"
+            className="logo"
+          />
+          Flipkart</Link>
       </div>
       { (userEmail || sellerEmail) && (
         <div className="account-container">
