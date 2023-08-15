@@ -4,7 +4,7 @@ import './userLogin.css';
 
 const UserLogin = () => {
   const history = useNavigate(); 
-  const [emailOrMobile, setEmailOrMobile] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
@@ -14,7 +14,7 @@ const UserLogin = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ emailOrMobile, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
@@ -37,8 +37,8 @@ const UserLogin = () => {
           type="text"
           placeholder="Email or Mobile Number"
           className="login-input"
-          value={emailOrMobile}
-          onChange={(e) => setEmailOrMobile(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
