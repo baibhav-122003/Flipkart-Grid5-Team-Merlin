@@ -24,7 +24,7 @@ const FlipkartHeader = () => {
             <Link to="/user/rewards">
               <button className="dropdown-item">Loyalty Points</button>{" "}
             </Link>
-            <Link to="/seller/login">
+            <Link to="/login">
               <button
                 className="dropdown-item"
                 onClick={() => {
