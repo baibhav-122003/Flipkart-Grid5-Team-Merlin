@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./FlipkartHeader.css";
 import { approveService } from "../../BlockChain Service/approveService";
 
 const FlipkartHeader = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const userEmail = localStorage.getItem("userEmail");
-  const sellerEmail = localStorage.getItem("sellerEmail");
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
+  const [sellerEmail, setSellerEmail] = useState(localStorage.getItem("sellerEmail"));
+
+  useEffect(() => {
+    // Update state when localStorage changes
+    setUserEmail(localStorage.getItem("userEmail"));
+    setSellerEmail(localStorage.getItem("sellerEmail"));
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
