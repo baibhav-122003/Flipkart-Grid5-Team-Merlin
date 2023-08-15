@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./FlipkartHeader.css";
 import { approveService } from "../../BlockChain Service/approveService";
 
 const FlipkartHeader = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
-  const [sellerEmail, setSellerEmail] = useState(localStorage.getItem("sellerEmail"));
-
-  useEffect(() => {
-    setUserEmail(localStorage.getItem("userEmail"));
-    setSellerEmail(localStorage.getItem("sellerEmail"));
-  }, []);
-
-  useEffect(() => {
-    // Check for changes in user's login status
-    if (!userEmail && !sellerEmail) {
-      setDropdownOpen(false); // Close dropdown when user logs out
-    }
-  }, [userEmail, sellerEmail]);
+  const userEmail = localStorage.getItem("userEmail");
+  const sellerEmail = localStorage.getItem("sellerEmail");
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -35,6 +23,9 @@ const FlipkartHeader = () => {
       localStorage.removeItem("sellerName");
     }
     // approveService(1000);
+    
+    // Reload the page after logout
+    window.location.reload();
   };
 
   return (
@@ -59,6 +50,14 @@ const FlipkartHeader = () => {
               </Link>
             </div>
           )}
+        </div>
+      )}
+      {/* Render account button if logged in */}
+      { !(userEmail || sellerEmail) && (
+        <div className="account-container">
+          <Link to="/login">
+            <button className="account-button">Login</button>
+          </Link>
         </div>
       )}
     </header>
