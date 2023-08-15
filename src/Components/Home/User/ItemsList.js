@@ -9,8 +9,8 @@ const ItemsList = () => {
         <div className="item-card">Laptops</div>
       </Link>
 
-      <Link to="/user/products/smartphones">
-        <div className="item-card">Smartphones</div>
+      <Link to="/user/products/smartphone">
+        <div className="item-card">Smartphone</div>
       </Link>
     </div>
   );
