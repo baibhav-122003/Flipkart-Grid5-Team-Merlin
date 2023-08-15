@@ -12,7 +12,7 @@ const UserLogin = () => {
     if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
       history('/home');
     }
-  }, );
+  }, []);
 
 
   const handleLogin = async () => {
