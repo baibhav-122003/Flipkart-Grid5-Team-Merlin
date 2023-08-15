@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./ProductList.css";
 
 const ProductList = () => {
   const { category } = useParams();
+  const [products, setProducts] = useState([]);
 
-  // Replace this with actual product data or API calls
-  const products = [
-    { id: 1, name: "Product 1", price: 100 },
-    { id: 2, name: "Product 2", price: 150 },
-    { id: 3, name: "Product 3", price: 200 },
-    // ... more products
-  ];
+  useEffect(() => {
+    // Fetch products from the backend API with the category parameter
+    fetch(`http://localhost:8000/api/productList/?category=${category}`)
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error fetching products:", error));
+  }, [category]);
+  
 
   return (
     <div className="product-list">
