@@ -46,11 +46,6 @@ const SellerLogin = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <img
-          src="/path/to/flipkart-logo.png"
-          alt="Flipkart Logo"
-          className="login-logo"
-        />
         <h2>Seller Login</h2>
         <input
           type="text"

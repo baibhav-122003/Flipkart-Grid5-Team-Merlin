@@ -48,11 +48,6 @@ const UserLogin = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <img
-          src="/path/to/flipkart-logo.png"
-          alt="Flipkart Logo"
-          className="login-logo"
-        />
         <h2>User Login</h2>
         <input
           type="text"

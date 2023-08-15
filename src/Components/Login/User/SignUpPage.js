@@ -32,7 +32,6 @@ const SignUpPage = () => {
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <img src="/path/to/flipkart-logo.png" alt="Flipkart Logo" className="signup-logo" />
         <h2>Sign Up</h2>
         <input
           type="text"
