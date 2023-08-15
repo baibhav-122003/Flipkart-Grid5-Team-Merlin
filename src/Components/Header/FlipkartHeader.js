@@ -79,14 +79,6 @@ const FlipkartHeader = () => {
     localStorage.getItem("sellerEmail")
   );
 
-  // Of no use
-  // useEffect(() => {
-  //   //run window. location. reload() one time
-
-  //   setUserEmail(localStorage.getItem("userEmail"));
-  //   setSellerEmail(localStorage.getItem("sellerEmail"));
-  // }, []);
-
   useEffect(() => {
     // Check for changes in user's login status
     if (!userEmail && !sellerEmail) {
