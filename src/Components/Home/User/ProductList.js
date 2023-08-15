@@ -22,7 +22,7 @@ const ProductList = () => {
           <div key={product.id} className="product-tile">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">${product.price}</p>
-            <Link to="/">
+            <Link to="/home">
               <button className="buy-button">Buy</button>
             </Link>
           </div>

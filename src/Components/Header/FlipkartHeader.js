@@ -13,7 +13,7 @@ const FlipkartHeader = () => {
   return (
     <header className="flipkart-header">
       <div className="logo-container">
-        <Link to="/">Flipkart</Link>
+        <Link to="/home">Flipkart</Link>
       </div>
       <div className="account-container">
         <button className="account-button" onClick={toggleDropdown}>

@@ -19,7 +19,7 @@ const UserLogin = () => {
 
       if (response.ok) {
         // Redirect to home page on successful login
-        history('/home'); // Replace '/home' with your actual home page route
+        history('/'); // Replace '/home' with your actual home page route
       } else {
         // Handle login failure
       }
