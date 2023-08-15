@@ -9,16 +9,21 @@ const FlipkartHeader = () => {
   const [sellerEmail, setSellerEmail] = useState(localStorage.getItem("sellerEmail"));
 
   useEffect(() => {
-    // Update state when localStorage changes
     setUserEmail(localStorage.getItem("userEmail"));
     setSellerEmail(localStorage.getItem("sellerEmail"));
   }, []);
+
+  useEffect(() => {
+    // Check for changes in user's login status
+    if (!userEmail && !sellerEmail) {
+      setDropdownOpen(false); // Close dropdown when user logs out
+    }
+  }, [userEmail, sellerEmail]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  // Function to handle logout
   const handleLogout = () => {
     if (userEmail && localStorage.getItem("userName")) {
       localStorage.removeItem("userEmail");
