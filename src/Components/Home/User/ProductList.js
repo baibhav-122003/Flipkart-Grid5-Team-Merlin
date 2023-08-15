@@ -20,7 +20,7 @@ const ProductList = () => {
 
   return (
     <div className="product-list">
-      <h2>{category === "laptop" ? "Laptop" : "Smartphone"}</h2>
+      <h2>{category === "laptop" ? "laptop" : "Smartphone"}</h2>
       <div className="product-tiles">
         {products.map((product) => (
           <div key={product.itemName} className="product-tile">
