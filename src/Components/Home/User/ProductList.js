@@ -18,6 +18,28 @@ const ProductList = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, [category]);
 
+  const userBuyService = () => {
+    // fetch(`http://localhost:8000/api/buyService/`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //     body: JSON.stringify({
+    //     itemName: "laptop",
+    //     itemPrice: 1000,
+
+    //   }),
+    // })
+
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Response from backend:", data); // Print the response
+    //   })
+    //   .catch((error) => console.error("Error fetching products:", error));
+    console.log({products});
+  };
+  
+
   return (
     <div className="product-list">
       <h2>{category === "laptop" ? "laptop" : "Smartphone"}</h2>
@@ -27,7 +49,7 @@ const ProductList = () => {
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
             <Link to="/home">
-              <button className="buy-button">Buy</button>
+              <button className="buy-button" onClick={userBuyService()}>Buy</button>
             </Link>
           </div>
         ))}
