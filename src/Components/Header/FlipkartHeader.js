@@ -21,8 +21,8 @@ const FlipkartHeader = () => {
         </button>
         {isDropdownOpen && (
           <div className="dropdown-menu">
-            {localStorage.getItem("userEmail") ||
-              localStorage.getItem("sellerEmail") && (
+            {(localStorage.getItem("userEmail") ||
+              localStorage.getItem("sellerEmail")) && (
                 <Link to="/user/rewards">
                   <button className="dropdown-item">Loyalty Points</button>{" "}
                 </Link>
