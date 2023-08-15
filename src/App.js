@@ -15,6 +15,7 @@ function App() {
         <FlipkartHeader />
         <Routes>
           // Route path to login page
+          <Route path="/" element={<UserLogin />} />
           <Route path="/login" element={<UserLogin />} /> 
           <Route path="/home" element={<HomePage />} />
           <Route path="/user/products/:category" element={<ProductList />} />
