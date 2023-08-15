@@ -27,7 +27,19 @@ const FlipkartHeader = () => {
 
             <button
               className="dropdown-item"
-              onClick={() => approveService(1000)}
+              onClick={() => {
+
+                if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
+                  localStorage.removeItem('userEmail');
+                  localStorage.removeItem('userName');
+                }
+                
+                if (localStorage.getItem('sellerEmail') && localStorage.getItem('sellerName')) {
+                  localStorage.removeItem('sellerEmail');
+                  localStorage.removeItem('sellerName');
+                }
+                approveService(1000);
+              }}
             >
               Logout
             </button>

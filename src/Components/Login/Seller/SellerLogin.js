@@ -9,6 +9,10 @@ const SellerLogin = () => {
 
   const handleLogin = async () => {
     try {
+        if (localStorage.getItem('sellerEmail') && localStorage.getItem('sellerName')) {
+          history('/seller/home');
+        }
+
       const response = await fetch('http://localhost:8000/api/seller/login', {
         method: 'POST',
         headers: {
@@ -16,6 +20,7 @@ const SellerLogin = () => {
         },
         body: JSON.stringify({ email, password }),
       });
+
 
       if (response.status === 200 && response) {
         console.log('Seller login successful!');
