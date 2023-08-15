@@ -19,6 +19,12 @@ const UserLogin = () => {
 
       if (response.status === 200 && response) {
         console.log('Login successful!');
+
+        const userData = await response.json();
+
+      // Store user details in localStorage
+      localStorage.setItem('userEmail', userData.email);
+      localStorage.setItem('userName', userData.username);
         
         // Redirect to home page on successful login
 
