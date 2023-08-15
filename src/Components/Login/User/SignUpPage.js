@@ -5,7 +5,7 @@ import './SignUpPage.css'; // Create the CSS file for styling
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nameofuser, setNameofuser] = useState('');
+  const [name, setName] = useState('');
 
   const handleSignUp = async () => {
     try {
@@ -14,10 +14,10 @@ const SignUpPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, nameofuser }),
+        body: JSON.stringify({ email, password, name }),
       });
 
-      if (response.status === 200 ) {
+      if (response.status === 201 ) {
         console.log('Sign-up successful!');
         // Redirect to login page after successful sign-up
         window.location.href = '/login';
@@ -52,8 +52,8 @@ const SignUpPage = () => {
           type="text"
           placeholder="Full Name"
           className="signup-input"
-          value={nameofuser}
-          onChange={(e) => setNameofuser(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <button className="signup-button" onClick={handleSignUp}>Sign Up</button>
         <div className="login-link">
