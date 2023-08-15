@@ -1,4 +1,5 @@
 import UserLogin from './Components/Login/User/UserLogin';
+import SignUpPage from './Components/Login/User/SignUpPage';
 import FlipkartHeader from './Components/Header/FlipkartHeader';
 import React from 'react';
 import { BrowserRouter as Router, Routes,  Route  } from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
         <FlipkartHeader />
         <Routes>
           // Route path to login page
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/" element={<UserLogin />} />
           <Route path="/login" element={<UserLogin />} /> 
           <Route path="/home" element={<HomePage />} />

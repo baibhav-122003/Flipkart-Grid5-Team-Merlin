@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './userLogin.css';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./userLogin.css";
 
 const UserLogin = () => {
-  const history = useNavigate(); 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const history = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
-      history('/home');
+    if (localStorage.getItem("userEmail") && localStorage.getItem("userName")) {
+      history("/home");
     }
   }, []);
-
 
   const handleLogin = async () => {
     try {
@@ -21,37 +19,40 @@ const UserLogin = () => {
       //   history('/home');
       // }
 
-      const response = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
 
       if (response.status === 200 && response) {
-        console.log('Login successful!');
+        console.log("Login successful!");
 
         const userData = await response.json();
 
-      // Store user details in localStorage
-      localStorage.setItem('userEmail', userData.email);
-      localStorage.setItem('userName', userData.username);
-        
+        // Store user details in localStorage
+        localStorage.setItem("userEmail", userData.email);
+        localStorage.setItem("userName", userData.username);
+
         // Redirect to home page on successful login
         window.location.href = "/home";
-
       } else {
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <img src="/path/to/flipkart-logo.png" alt="Flipkart Logo" className="login-logo" />
+        <img
+          src="/path/to/flipkart-logo.png"
+          alt="Flipkart Logo"
+          className="login-logo"
+        />
         <h2>User Login</h2>
         <input
           type="text"
@@ -67,12 +68,16 @@ const UserLogin = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
         <div className="forgot-password">Forgot Password?</div>
         <hr />
-        <div className="signup-link">
-          New to Flipkart? <span className="signup-text">Sign up</span>
-        </div>
+        <Link to="/signup" className="signup-link">
+          <div className="signup-link">
+            <span className="signup-text">New to Flipkart? Sign up</span>
+          </div>
+        </Link>
       </div>
     </div>
   );
