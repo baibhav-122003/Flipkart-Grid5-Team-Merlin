@@ -13,7 +13,7 @@ const ProductList = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Response from backend:", data); // Print the response
-        setProducts(data);
+        setProducts(data.items); // Use data.items
       })
       .catch((error) => console.error("Error fetching products:", error));
   }, [category]);
@@ -23,9 +23,9 @@ const ProductList = () => {
       <h2>{category === "laptop" ? "Laptop" : "Smartphone"}</h2>
       <div className="product-tiles">
         {products.map((product) => (
-          <div key={product.id} className="product-tile">
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">${product.price}</p>
+          <div key={product.itemName} className="product-tile">
+            <h3 className="product-name">{product.itemName}</h3>
+            <p className="product-price">${product.itemPrice}</p>
             <Link to="/home">
               <button className="buy-button">Buy</button>
             </Link>
