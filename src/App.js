@@ -1,3 +1,4 @@
+import UserLogin from './Components/Login/User/UserLogin';
 import FlipkartHeader from './Components/Header/FlipkartHeader';
 import React from 'react';
 import { BrowserRouter as Router, Routes,  Route  } from 'react-router-dom';
@@ -13,6 +14,8 @@ function App() {
       <div className="app">
         <FlipkartHeader />
         <Routes>
+          // Route path to login page
+          <Route path="/login" element={<UserLogin />} /> 
           <Route path="/" element={<HomePage />} />
           <Route path="/user/products/:category" element={<ProductList />} />
           //route to reward 
