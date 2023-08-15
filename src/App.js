@@ -7,6 +7,7 @@ import ProductList from './Components/Home/User/ProductList';
 import Rewards from './Components/Rewards/Rewards';
 import SellerDashboard from './Components/Home/Seller/SellerDashboard';
 import SellerRewards from './Components/Rewards/SellerRewards';
+import SellerLogin from './Components/Login/Seller/SellerLogin';
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
           <Route path="/user/products/:category" element={<ProductList />} />
           //route to reward 
           <Route path="/user/rewards" element={<Rewards />} />
-          <Route path="/seller" element={<SellerDashboard />} />
+          // route to seller to seller login
+          <Route path="/seller" element={<SellerLogin />} />
+          <Route path="/seller/login" element={<SellerLogin />} />
+          <Route path="/seller/home" element={<SellerDashboard />} />
           <Route path="/seller/rewards" element={<SellerRewards />} />
         </Routes>
       </div>
