@@ -17,9 +17,12 @@ const UserLogin = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
+      if (response.status === 200 && response) {
+        console.log('Login successful!');
+        
         // Redirect to home page on successful login
-        history('/'); // Replace '/home' with your actual home page route
+
+        history('/home'); // Replace '/home' with your actual home page route
       } else {
         // Handle login failure
       }
