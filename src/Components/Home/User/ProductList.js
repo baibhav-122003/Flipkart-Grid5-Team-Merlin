@@ -11,10 +11,12 @@ const ProductList = () => {
     // Fetch products from the backend API with the category parameter
     fetch(`http://localhost:8000/api/productList/?category=${category}`)
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        console.log("Response from backend:", data); // Print the response
+        setProducts(data);
+      })
       .catch((error) => console.error("Error fetching products:", error));
   }, [category]);
-  
 
   return (
     <div className="product-list">
