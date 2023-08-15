@@ -24,25 +24,31 @@ const FlipkartHeader = () => {
             <Link to="/user/rewards">
               <button className="dropdown-item">Loyalty Points</button>{" "}
             </Link>
+            <Link to="/seller/login">
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  if (
+                    localStorage.getItem("userEmail") &&
+                    localStorage.getItem("userName")
+                  ) {
+                    localStorage.removeItem("userEmail");
+                    localStorage.removeItem("userName");
+                  }
 
-            <button
-              className="dropdown-item"
-              onClick={() => {
-
-                if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
-                  localStorage.removeItem('userEmail');
-                  localStorage.removeItem('userName');
-                }
-                
-                if (localStorage.getItem('sellerEmail') && localStorage.getItem('sellerName')) {
-                  localStorage.removeItem('sellerEmail');
-                  localStorage.removeItem('sellerName');
-                }
-                // approveService(1000);
-              }}
-            >
-              Logout
-            </button>
+                  if (
+                    localStorage.getItem("sellerEmail") &&
+                    localStorage.getItem("sellerName")
+                  ) {
+                    localStorage.removeItem("sellerEmail");
+                    localStorage.removeItem("sellerName");
+                  }
+                  // approveService(1000);
+                }}
+              >
+                Logout
+              </button>
+            </Link>
           </div>
         )}
       </div>
