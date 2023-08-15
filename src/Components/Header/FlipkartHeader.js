@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./FlipkartHeader.css";
 import { approveService } from "../../BlockChain Service/approveService";
 
 const FlipkartHeader = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
   const userEmail = localStorage.getItem("userEmail");
   const sellerEmail = localStorage.getItem("sellerEmail");
 
-  //print
-  console.log("userEmail: " + userEmail);
-  console.log("sellerEmail: " + sellerEmail);
-
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
+  };
+
+  // Function to handle logout
+  const handleLogout = () => {
+    if (userEmail && localStorage.getItem("userName")) {
+      localStorage.removeItem("userEmail");
+      localStorage.removeItem("userName");
+    }
+
+    if (sellerEmail && localStorage.getItem("sellerName")) {
+      localStorage.removeItem("sellerEmail");
+      localStorage.removeItem("sellerName");
+    }
+    // approveService(1000);
   };
 
   return (
@@ -22,8 +31,7 @@ const FlipkartHeader = () => {
       <div className="logo-container">
         <Link to="/">Flipkart</Link>
       </div>
-      { (localStorage.getItem("userEmail") ||
-        localStorage.getItem("sellerEmail")) && (
+      { (userEmail || sellerEmail) && (
         <div className="account-container">
           <button className="account-button" onClick={toggleDropdown}>
             My Account
@@ -34,27 +42,7 @@ const FlipkartHeader = () => {
                 <button className="dropdown-item">Loyalty Points</button>{" "}
               </Link>
               <Link to="/login">
-                <button
-                  className="dropdown-item"
-                  onClick={() => {
-                    if (
-                      localStorage.getItem("userEmail") &&
-                      localStorage.getItem("userName")
-                    ) {
-                      localStorage.removeItem("userEmail");
-                      localStorage.removeItem("userName");
-                    }
-
-                    if (
-                      localStorage.getItem("sellerEmail") &&
-                      localStorage.getItem("sellerName")
-                    ) {
-                      localStorage.removeItem("sellerEmail");
-                      localStorage.removeItem("sellerName");
-                    }
-                    // approveService(1000);
-                  }}
-                >
+                <button className="dropdown-item" onClick={handleLogout}>
                   Logout
                 </button>
               </Link>
