@@ -9,6 +9,10 @@ const FlipkartHeader = () => {
   const [sellerEmail, setSellerEmail] = useState(localStorage.getItem("sellerEmail"));
 
   useEffect(() => {
+    //run window. location. reload() one time
+    
+
+    
     setUserEmail(localStorage.getItem("userEmail"));
     setSellerEmail(localStorage.getItem("sellerEmail"));
   }, []);
@@ -34,6 +38,7 @@ const FlipkartHeader = () => {
       localStorage.removeItem("sellerEmail");
       localStorage.removeItem("sellerName");
     }
+    window.location.href = "/login";
     // approveService(1000);
   };
 
@@ -52,11 +57,9 @@ const FlipkartHeader = () => {
               <Link to="/user/rewards">
                 <button className="dropdown-item">Loyalty Points</button>{" "}
               </Link>
-              <Link to="/login">
-                <button className="dropdown-item" onClick={handleLogout}>
+              <button className="dropdown-item" onClick={handleLogout}>
                   Logout
                 </button>
-              </Link>
             </div>
           )}
         </div>

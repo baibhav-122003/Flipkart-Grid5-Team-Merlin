@@ -39,10 +39,9 @@ const UserLogin = () => {
       localStorage.setItem('userName', userData.username);
         
         // Redirect to home page on successful login
+        window.location.href = "/home";
 
-        history('/home'); // Replace '/home' with your actual home page route
       } else {
-        // Handle login failure
       }
     } catch (error) {
       console.error('Error during login:', error);
