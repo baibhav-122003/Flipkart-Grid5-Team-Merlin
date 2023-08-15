@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./FlipkartHeader.css";
 import { approveService } from "../../BlockChain Service/approveService";
 
 const FlipkartHeader = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const userEmail = localStorage.getItem("userEmail");
+  const sellerEmail = localStorage.getItem("sellerEmail");
+
+  //print
+  console.log("userEmail: " + userEmail);
+  console.log("sellerEmail: " + sellerEmail);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -15,7 +22,7 @@ const FlipkartHeader = () => {
       <div className="logo-container">
         <Link to="/">Flipkart</Link>
       </div>
-      {(localStorage.getItem("userEmail") ||
+      { (localStorage.getItem("userEmail") ||
         localStorage.getItem("sellerEmail")) && (
         <div className="account-container">
           <button className="account-button" onClick={toggleDropdown}>
