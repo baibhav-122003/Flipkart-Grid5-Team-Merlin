@@ -7,11 +7,19 @@ const UserLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+  useEffect(() => {
+    if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
+      history('/home');
+    }
+  }, );
+
+
   const handleLogin = async () => {
     try {
-      if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
-        history('/home');
-      }
+      // if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
+      //   history('/home');
+      // }
 
       const response = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
