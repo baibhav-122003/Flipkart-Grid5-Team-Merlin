@@ -113,7 +113,7 @@ const FlipkartHeader = () => {
   const toggleDropdown = () => {
     const dropdownMenu = document.querySelector(".dropdown-menu");
     dropdownMenu.classList.toggle("show");
-  };
+  }
 
   return (
     <header className="flipkart-header">
@@ -130,8 +130,8 @@ const FlipkartHeader = () => {
 
       {showAccount && (
         <div className="account-container">
-          <button className="account-button">My Account</button>
-          <div className="dropdown-menu">
+          <button className="account-button" onClick = {toggleDropdown} >My Account</button>
+          <div className="dropdown-menu show">
             <Link to="/user/rewards">
               <button className="dropdown-item">Loyalty Points</button>
             </Link>
