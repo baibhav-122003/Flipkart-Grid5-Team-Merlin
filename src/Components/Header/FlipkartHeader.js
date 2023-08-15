@@ -38,7 +38,7 @@ const FlipkartHeader = () => {
                   localStorage.removeItem('sellerEmail');
                   localStorage.removeItem('sellerName');
                 }
-                approveService(1000);
+                // approveService(1000);
               }}
             >
               Logout
