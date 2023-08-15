@@ -18,27 +18,26 @@ const ProductList = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, [category]);
 
-  const userBuyService = () => {
-    // fetch(`http://localhost:8000/api/buyService/`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //     body: JSON.stringify({
-    //     itemName: "laptop",
-    //     itemPrice: 1000,
+  const userBuyService = (itemID) => {
 
-    //   }),
-    // })
-
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Response from backend:", data); // Print the response
-    //   })
-    //   .catch((error) => console.error("Error fetching products:", error));
-    console.log({products});
+    console.log(localStorage.getItem("userEmail"));
+    console.log(localStorage.getItem("userName"));
+    fetch(`http://localhost:8000/api/buyService`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userEmail: localStorage.getItem("userEmail"),
+        itemID: itemID,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from backend:", data);
+      })
+      .catch((error) => console.error("Error fetching products:", error));
   };
-  
 
   return (
     <div className="product-list">
@@ -49,7 +48,12 @@ const ProductList = () => {
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
             <Link to="/home">
-              <button className="buy-button" onClick={userBuyService()}>Buy</button>
+              <button
+                className="buy-button"
+                onClick={() => userBuyService(product.itemID)}
+              >
+                Buy
+              </button>
             </Link>
           </div>
         ))}

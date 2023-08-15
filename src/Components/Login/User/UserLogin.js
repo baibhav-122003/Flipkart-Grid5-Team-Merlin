@@ -33,8 +33,10 @@ const UserLogin = () => {
         const userData = await response.json();
 
         // Store user details in localStorage
+        console.log("User data:", userData)
+
         localStorage.setItem("userEmail", userData.email);
-        localStorage.setItem("userName", userData.username);
+        localStorage.setItem("userName", userData.nameofuser);
 
         // Redirect to home page on successful login
         window.location.href = "/home";
