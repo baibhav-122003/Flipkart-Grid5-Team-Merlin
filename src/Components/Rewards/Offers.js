@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Offers.css";
 
 const Offers = () => {
-  // Replace with actual offer data
+
+  const [offers, setOffers] = useState([]);
 
   const fetchResponse = async () => {
     const response = await fetch("http://localhost:8000/api/user/getOffers", {
@@ -13,19 +14,15 @@ const Offers = () => {
     });
 
     if (response.status === 200 && response) {
-      console.log(response.json());
+      const data = await response.json();
+      console.log(data);
+      setOffers(data);
     }
   };
 
   useEffect(() => {
     fetchResponse();
   }, []);
-
-  const offers = [
-    { id: 1, name: "Discount on Product A", cost: 50 },
-    { id: 2, name: "Free Shipping", cost: 30 },
-    // ... more offers
-  ];
 
   const availOffer = async () => {
     const response = await fetch("http://localhost:8000/api/user/availOffer", {
@@ -57,3 +54,5 @@ const Offers = () => {
 };
 
 export default Offers;
+
+
