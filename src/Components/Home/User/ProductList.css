@@ -1,5 +1,4 @@
-/* ProductList.css */
-.product-list {
+/* .product-list {
   padding: 20px;
 }
 
@@ -45,4 +44,66 @@
 
 .buy-button:hover {
   background-color: #1f64db;
+} */
+
+
+/* ProductList.css */
+.product-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-list h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-tile {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.product-tile:hover {
+  transform: translateY(-5px);
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #888;
+}
+
+.buy-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #0056b3;
 }

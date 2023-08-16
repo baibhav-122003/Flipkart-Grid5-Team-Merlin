@@ -41,10 +41,13 @@ const ProductList = () => {
 
   return (
     <div className="product-list">
-      <h2>{category === "laptop" ? "laptop" : "Smartphone"}</h2>
+      <h2>{category === "laptop" ? "Laptops" : "Smartphones"}</h2>
       <div className="product-tiles">
         {products.map((product) => (
           <div key={product.itemName} className="product-tile">
+            <div className="product-image">
+              <img src={product.imageUrl} alt={product.itemName} />
+            </div>
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
             <Link to="/home">
