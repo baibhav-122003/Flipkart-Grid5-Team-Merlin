@@ -12,31 +12,26 @@ import SellerLogin from './Components/Login/Seller/SellerLogin';
 
 function App() {
   return (
-    // <Router>
-    //   <div className="app">
-    //     <FlipkartHeader />
-    //     <Routes>
-    //       // Route path to login page
-    //       <Route path="/signup" element={<SignUpPage />} />
-    //       <Route path="/" element={<UserLogin />} />
-    //       <Route path="/login" element={<UserLogin />} /> 
-    //       <Route path="/home" element={<HomePage />} />
-    //       <Route path="/user/products/:category" element={<ProductList />} />
-    //       //route to reward 
-    //       <Route path="/user/rewards" element={<Rewards />} />
-    //       // route to seller to seller login
-    //       <Route path="/seller" element={<SellerLogin />} />
-    //       <Route path="/seller/login" element={<SellerLogin />} />
-    //       <Route path="/seller/home" element={<SellerDashboard />} />
-    //       <Route path="/seller/rewards" element={<SellerRewards />} />
-    //     </Routes>
-    //   </div>
-    // </Router>
-
-
-    <>
-      <ProductList />
-    </>
+    <Router>
+      <div className="app">
+        <FlipkartHeader />
+        <Routes>
+          // Route path to login page
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/" element={<UserLogin />} />
+          <Route path="/login" element={<UserLogin />} /> 
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/user/products/:category" element={<ProductList />} />
+          //route to reward 
+          <Route path="/user/rewards" element={<Rewards />} />
+          // route to seller to seller login
+          <Route path="/seller" element={<SellerLogin />} />
+          <Route path="/seller/login" element={<SellerLogin />} />
+          <Route path="/seller/home" element={<SellerDashboard />} />
+          <Route path="/seller/rewards" element={<SellerRewards />} />
+        </Routes>
+      </div>
+    </Router>
   );
 
 }
