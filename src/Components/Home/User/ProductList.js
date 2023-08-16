@@ -9,7 +9,7 @@ const ProductList = () => {
 
   useEffect(() => {
     // Fetch products from the backend API with the category parameter
-    fetch(`http://localhost:8000/api/productList/?category=${category}`)
+    fetch(`http://localhost:8000/api/user/productList/?category=${category}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Response from backend:", data); // Print the response
@@ -22,7 +22,7 @@ const ProductList = () => {
 
     console.log(localStorage.getItem("userEmail"));
     console.log(localStorage.getItem("userName"));
-    fetch(`http://localhost:8000/api/buyService`, {
+    fetch(`http://localhost:8000/api/user/buyService`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
