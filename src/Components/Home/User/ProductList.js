@@ -46,7 +46,7 @@ const ProductList = () => {
         {products.map((product) => (
           <div key={product.itemName} className="product-tile">
             <div className="product-image">
-              <img src={product.imageUrl} alt={product.itemName} />
+              <img src="https://img.freepik.com/free-vector/realistic-display-smartphone-with-different-apps_52683-30241.jpg" alt={product.itemName} />
             </div>
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
