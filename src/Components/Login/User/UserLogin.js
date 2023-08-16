@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./userLogin.css";
+import { ethers } from 'ethers';
+
 
 const UserLogin = () => {
   const history = useNavigate();
@@ -13,18 +15,39 @@ const UserLogin = () => {
     }
   }, []);
 
+  const connectMetamask = async () => {
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    if (window.ethereum) {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      return address.toString();
+    } else {
+      console.log("Metamask not detected.");
+      return "";
+    }
+
+
+  };
+
   const handleLogin = async () => {
     try {
       // if (localStorage.getItem('userEmail') && localStorage.getItem('userName')) {
       //   history('/home');
       // }
 
+      const walletAddress = await connectMetamask();
+      console.log(walletAddress);
+      
+
       const response = await fetch("http://localhost:8000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, walletPublicAddress: walletAddress }),
       });
 
       if (response.status === 200 && response) {
@@ -40,8 +63,10 @@ const UserLogin = () => {
 
         // Redirect to home page on successful login
         window.location.href = "/home";
-      } else {
-      }
+      
+      } 
+
+
     } catch (error) {
       console.error("Error during login:", error);
     }
