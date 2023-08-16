@@ -16,7 +16,6 @@ const UserLogin = () => {
   }, []);
 
   const connectMetamask = async () => {
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     if (window.ethereum) {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -42,7 +41,7 @@ const UserLogin = () => {
       console.log(walletAddress);
       
 
-      const response = await fetch("http://localhost:8000/api/login", {
+      const response = await fetch("http://localhost:8000/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
