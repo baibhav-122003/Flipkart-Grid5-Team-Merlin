@@ -4,17 +4,22 @@ import "./Offers.css";
 const Offers = () => {
   // Replace with actual offer data
 
-  // useEffect(async () => {
-  //   const response = await fetch("http://localhost:8000/api/user/getOffers", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
+  const fetchResponse = async () => {
+    const response = await fetch("http://localhost:8000/api/user/getOffers", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  //   if (response.status === 200 && response) {
-  //   }
-  // }, []);
+    if (response.status === 200 && response) {
+      console.log(response.json());
+    }
+  };
+
+  useEffect(() => {
+    fetchResponse();
+  }, []);
 
   const offers = [
     { id: 1, name: "Discount on Product A", cost: 50 },
