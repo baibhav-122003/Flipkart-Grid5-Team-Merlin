@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CustomerList.css";
+import { approveService } from "../../BlockChain Service/approveService";
+
 
 const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
@@ -59,6 +61,9 @@ const CustomerList = () => {
   };
 
   const sendToken = async (userEmail) => {
+
+    await approveService(10);
+
     //requesting backend to update database
     await rewardUser(userEmail);
     //update the list of customers

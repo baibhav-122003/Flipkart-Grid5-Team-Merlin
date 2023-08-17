@@ -3,7 +3,6 @@ import "./Offers.css";
 import { approveService } from "../../BlockChain Service/approveService";
 
 const Offers = () => {
-
   const [offers, setOffers] = useState([]);
 
   const fetchResponse = async () => {
@@ -17,7 +16,6 @@ const Offers = () => {
 
     if (response.status === 200 && response) {
       const data = await response.json();
-      console.log(data);
       setOffers(data.allOffers);
     }
   };
@@ -27,9 +25,9 @@ const Offers = () => {
   }, []);
 
   const availOffer = async (offerId, tokensRequired) => {
-
     //user must approve flipkart to spend offer.tokensRequired tokens
-    // await approveService(tokensRequired);
+    await approveService(tokensRequired);
+
 
     const response = await fetch("http://localhost:8000/api/user/availOffer", {
       method: "POST",
@@ -37,9 +35,8 @@ const Offers = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          userEmail: localStorage.getItem("userEmail"),
-         sellerEmail: "seller@gmail.com", 
-         offerId: offerId,
+        userEmail: localStorage.getItem("userEmail"),
+        offerId: offerId,
       }),
     });
 
@@ -59,7 +56,10 @@ const Offers = () => {
         {offers.map((offer) => (
           <div key={offer._id} className="offer-tile">
             <h3 className="offer-name">{offer.details}</h3>
-            <button className="token-button" onClick={()=> availOffer(offer._id, offer.tokensRequired)}>
+            <button
+              className="token-button"
+              onClick={() => availOffer(offer._id, offer.tokensRequired)}
+            >
               {offer.tokensRequired} Tokens
             </button>
           </div>
@@ -70,5 +70,3 @@ const Offers = () => {
 };
 
 export default Offers;
-
-
