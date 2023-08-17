@@ -58,7 +58,7 @@ const UserLogin = () => {
         console.log("User data:", userData)
 
         localStorage.setItem("userEmail", userData.email);
-        localStorage.setItem("userName", userData.nameofuser);
+        localStorage.setItem("userName", userData.name);
 
         // Redirect to home page on successful login
         window.location.href = "/home";

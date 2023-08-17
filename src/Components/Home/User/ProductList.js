@@ -17,28 +17,33 @@ const ProductList = () => {
       })
       .catch((error) => console.error("Error fetching products:", error));
   }, [category]);
-
-  const userBuyService = (itemID) => {
-
-    console.log(localStorage.getItem("userEmail"));
-    console.log(localStorage.getItem("userName"));
-    fetch(`http://localhost:8000/api/user/buyService`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userEmail: localStorage.getItem("userEmail"),
-        itemID: itemID,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+  const userBuyService = async (itemID) => {
+    try {
+      console.log(localStorage.getItem("userEmail"));
+      console.log(localStorage.getItem("userName"));
+  
+      const response = await fetch(`http://localhost:8000/api/user/buy`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userEmail: localStorage.getItem("userEmail"),
+          itemID: itemID,
+        }),
+      });
+  
+      if (response.status === 200) {
+        const data = await response.json();
         console.log("Response from backend:", data);
-      })
-      .catch((error) => console.error("Error fetching products:", error));
+      } else {
+        console.error("Error fetching:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   };
-
+  
   return (
     <div className="product-list">
       <h2>{category === "laptop" ? "Laptops" : "Smartphones"}</h2>
@@ -46,7 +51,10 @@ const ProductList = () => {
         {products.map((product) => (
           <div key={product.itemName} className="product-tile">
             <div className="product-image">
-              <img src="https://img.freepik.com/free-vector/realistic-display-smartphone-with-different-apps_52683-30241.jpg" alt={product.itemName} />
+              <img
+                src="https://img.freepik.com/free-vector/realistic-display-smartphone-with-different-apps_52683-30241.jpg"
+                alt={product.itemName}
+              />
             </div>
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>

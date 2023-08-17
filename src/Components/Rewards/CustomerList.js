@@ -1,19 +1,71 @@
-import React, { useState } from 'react';
-import './CustomerList.css';
+import React, { useState, useEffect } from "react";
+import "./CustomerList.css";
 
 const CustomerList = () => {
-  const [customers, setCustomers] = useState([
-    { id: 1, name: 'Customer 1', email: 'customer1@example.com' },
-    { id: 2, name: 'Customer 2', email: 'customer2@example.com' },
-    { id: 3, name: 'Customer 3', email: 'customer3@example.com' },
-    { id: 4, name: 'Customer 4', email: 'customer4@example.com' },
-    { id: 5, name: 'Customer 5', email: 'customer5@example.com' },
-  ]);
+  const [customers, setCustomers] = useState([]);
 
-  const sendToken = (customerId) => {
-    console.log(`Reward sent to customer with ID ${customerId}`);
+  const FetchResponse = async () => {
+    try {
+      console.log("Fetching loyal customers...")
+      const response = await fetch(
+        "http://localhost:8000/api/seller/getLoyalCustomers",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            sellerEmail: localStorage.getItem("sellerEmail"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const responseData = await response.json();
+
+        const { loyalCustomers } = responseData;
+        console.log("Loyal Customers:", loyalCustomers);
+        setCustomers(loyalCustomers);
+      } else {
+        console.error("Error fetching:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchResponse();
+  }, []);
+
+  const rewardUser = async (userEmail) => {
+
+    const response = await fetch(
+      "http://localhost:8000/api/seller/rewardCustomer",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sellerEmail: localStorage.getItem("sellerEmail"),
+          userEmail: userEmail,
+        }),
+      }
+    );
+    if (response.status === 200) {
+      console.log("Reward sent");
+    } else {
+      console.error("Error fetching:", response.statusText);
+    }
+    console.log("removed");
+  };
+
+  const sendToken = async (userEmail) => {
+    //requesting backend to update database
+    await rewardUser(userEmail);
+    //update the list of customers
+    await FetchResponse();
+
     // Remove the rewarded customer from the list
-    setCustomers(customers.filter(customer => customer.id !== customerId));
   };
 
   return (
@@ -22,18 +74,21 @@ const CustomerList = () => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
             <th>Email</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {customers.map((customer) => (
-            <tr key={customer.id}>
-              <td>{customer.name}</td>
-              <td>{customer.email}</td>
+          {customers.map((email) => (
+            <tr key={email}>
+              <td>{email}</td>
               <td>
-                <button className="reward-button" onClick={() => sendToken(customer.id)}>Reward</button>
+                <button
+                  className="reward-button"
+                  onClick={() => sendToken(email)}
+                >
+                  Reward
+                </button>
               </td>
             </tr>
           ))}

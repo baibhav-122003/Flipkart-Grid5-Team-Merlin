@@ -52,12 +52,12 @@ const SellerLogin = () => {
 
         // Store user details in localStorage
         localStorage.setItem("sellerEmail", sellerData.email);
-        localStorage.setItem("sellerName", sellerData.username);
+        localStorage.setItem("sellerName", sellerData.name);
 
         // You might handle seller-specific data here
 
         // Redirect to seller home page on successful login
-        history("/seller/home"); // Replace '/seller/home' with your actual seller home page route
+        window.location.href = "/seller/home"
       } else {
         // Handle login failure
       }

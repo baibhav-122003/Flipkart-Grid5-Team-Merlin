@@ -3,7 +3,7 @@ import UserLoyaltyTokens from './LoyaltyTokens.js';
 import TransactionHistory from './TransactionHistory';
 import CustomerList from './CustomerList.js';
 
-const Rewards = () => {
+const SellerRewards = () => {
   return (
     <div>
       <h1>Loyalty Points</h1>
@@ -14,4 +14,4 @@ const Rewards = () => {
   );
 }
 
-export default Rewards;
+export default SellerRewards;

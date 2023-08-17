@@ -18,6 +18,16 @@ const FlipkartHeader = () => {
     }
   }, [userEmail, sellerEmail]);
 
+  const handleRewardsRoute = () => {
+    if (      localStorage.getItem("sellerEmail")) {
+      window.location.href = "/seller/rewards"
+    }else if (localStorage.getItem("userEmail")) {
+
+      window.location.href = "/user/rewards"
+
+    }
+  }
+
   const handleLogout = async () => {
     var response;
     if (userEmail) {
@@ -76,9 +86,11 @@ const FlipkartHeader = () => {
             My Account
           </button>
           <div className="dropdown-menu show">
-            <Link to="/user/rewards">
-              <button className="dropdown-item">Loyalty Points</button>
-            </Link>
+            {/* <Link to="/user/rewards">
+              <button className="dropdown-item">Loyalty Points</button> */}
+            {/* </Link> */}
+            <button className="dropdown-item" onClick={handleRewardsRoute}>Loyalty Points</button>
+
             <button className="dropdown-item" onClick={handleLogout}>
               Logout
             </button>
