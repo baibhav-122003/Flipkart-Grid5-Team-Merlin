@@ -11,6 +11,7 @@ const Offers = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        userEmail: localStorage.getItem("userEmail"),
       },
     });
 
@@ -47,6 +48,8 @@ const Offers = () => {
       const { message } = data;
       console.log(message);
     }
+
+    fetchResponse();
   };
 
   return (

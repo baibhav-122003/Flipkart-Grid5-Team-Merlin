@@ -2,21 +2,38 @@ import React, { useState, useEffect } from 'react';
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([]);
+
+  const FetchResponse = async () => {
+    try {
+      console.log("Fetching loyal customers...")
+      const response = await fetch(
+        "http://localhost:8000/api/seller/getItems",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            sellerEmail: localStorage.getItem("sellerEmail"),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const responseData = await response.json();
+
+        const { items } = responseData;
+        setProducts(items);
+      } else {
+        console.error("Error fetching:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   
   // Simulating fetching products from an API
   useEffect(() => {
-    // Replace this with your actual API call
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('/api/products');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
 
-    fetchProducts();
+    FetchResponse();
   }, []);
 
   return (
@@ -25,7 +42,7 @@ const SellerDashboard = () => {
       <h2>Products</h2>
       <ul>
         {products.map(product => (
-          <li key={product.id}>
+          <li key={product._id}>
             <strong>{product.name}</strong> - {product.description}
           </li>
         ))}

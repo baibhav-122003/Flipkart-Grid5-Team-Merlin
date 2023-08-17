@@ -6,7 +6,6 @@ const CustomerList = () => {
 
   const FetchResponse = async () => {
     try {
-      console.log("Fetching loyal customers...")
       const response = await fetch(
         "http://localhost:8000/api/seller/getLoyalCustomers",
         {
