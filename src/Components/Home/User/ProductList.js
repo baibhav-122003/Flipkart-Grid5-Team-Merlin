@@ -58,9 +58,9 @@ const ProductList = () => {
               /> */}
               <img
               src={
-                product.category === "laptop"
+                product.itemCategory === "laptop"
                   ? "https://www.apple.com/newsroom/images/product/mac/standard/Apple_MacBook-Pro_14-16-inch_10182021_big.jpg.slideshow-xlarge.jpg"
-                  : product.category === "smartphone"
+                  : product.itemCategory === "smartphone"
                   ? "https://m.media-amazon.com/images/I/71Ap5hKZoJL.jpg"
                   : "https://www.businessinsider.in/photo/47452951.cms" // Provide a default image path
               }
