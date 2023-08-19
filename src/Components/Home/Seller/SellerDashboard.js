@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import "./SellerDashboard.css"; // Import the corresponding CSS file
 
 const SellerDashboard = () => {
   const [products, setProducts] = useState([]);
-
   const FetchResponse = async () => {
     try {
       console.log("Fetching loyal customers...")
@@ -32,7 +32,6 @@ const SellerDashboard = () => {
   
   // Simulating fetching products from an API
   useEffect(() => {
-
     FetchResponse();
   }, []);
 
@@ -40,13 +39,24 @@ const SellerDashboard = () => {
     <div>
       <h1>Seller Dashboard</h1>
       <h2>Products</h2>
-      <ul>
+      <div className="product-tiles">
         {products.map(product => (
-          <li key={product._id}>
-            <strong>{product.name}</strong> - {product.description}
-          </li>
+          <div className="product-tile" key={product.id}>
+            <img
+              src={
+                product.category === "laptop"
+                  ? "https://www.apple.com/newsroom/images/product/mac/standard/Apple_MacBook-Pro_14-16-inch_10182021_big.jpg.slideshow-xlarge.jpg"
+                  : product.category === "smartphone"
+                  ? "https://m.media-amazon.com/images/I/71Ap5hKZoJL.jpg"
+                  : "https://www.businessinsider.in/photo/47452951.cms" // Provide a default image path
+              }
+              alt={product.name}
+            />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
