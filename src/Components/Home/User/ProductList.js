@@ -21,7 +21,7 @@ const ProductList = () => {
     try {
       console.log(localStorage.getItem("userEmail"));
       console.log(localStorage.getItem("userName"));
-  
+
       const response = await fetch(`http://localhost:8000/api/user/buy`, {
         method: "POST",
         headers: {
@@ -32,18 +32,19 @@ const ProductList = () => {
           itemID: itemID,
         }),
       });
-  
+
       if (response.status === 200) {
         const data = await response.json();
         console.log("Response from backend:", data);
       } else {
         console.error("Error fetching:", response.statusText);
       }
+      window.location.href = "/home";
     } catch (error) {
       console.error("Error fetching products:", error);
     }
   };
-  
+
   return (
     <div className="product-list">
       <h2>{category === "laptop" ? "Laptops" : "Smartphones"}</h2>
@@ -58,14 +59,12 @@ const ProductList = () => {
             </div>
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
-            <Link to="/home">
-              <button
-                className="buy-button"
-                onClick={() => userBuyService(product.itemID)}
-              >
-                Buy
-              </button>
-            </Link>
+            <button
+              className="buy-button"
+              onClick={() => userBuyService(product.itemID)}
+            >
+              Buy
+            </button>
           </div>
         ))}
       </div>
