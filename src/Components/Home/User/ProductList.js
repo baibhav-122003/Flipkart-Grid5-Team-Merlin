@@ -52,10 +52,20 @@ const ProductList = () => {
         {products.map((product) => (
           <div key={product.itemName} className="product-tile">
             <div className="product-image">
-              <img
+              {/* <img
                 src="https://img.freepik.com/free-vector/realistic-display-smartphone-with-different-apps_52683-30241.jpg"
                 alt={product.itemName}
-              />
+              /> */}
+              <img
+              src={
+                product.category === "laptop"
+                  ? "https://www.apple.com/newsroom/images/product/mac/standard/Apple_MacBook-Pro_14-16-inch_10182021_big.jpg.slideshow-xlarge.jpg"
+                  : product.category === "smartphone"
+                  ? "https://m.media-amazon.com/images/I/71Ap5hKZoJL.jpg"
+                  : "https://www.businessinsider.in/photo/47452951.cms" // Provide a default image path
+              }
+              alt={product.name}
+            />
             </div>
             <h3 className="product-name">{product.itemName}</h3>
             <p className="product-price">${product.itemPrice}</p>
